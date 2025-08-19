@@ -7,6 +7,6 @@ class ApiService {
 
   Future<Map<String, dynamic>> get() async {
     var response = await dio.get(EnvironmentVariables.getProduct);
-    return response.data;
+    return response.data["products"];
   }
 }
