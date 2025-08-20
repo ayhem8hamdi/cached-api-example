@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
 
 abstract class Failure {
   final String message;
@@ -14,15 +15,28 @@ abstract class Failure {
       return ServerFailure.fromDioError(error);
     } else if (error is FormatException) {
       return ParsingFailure(
-          message: 'Data format error', code: 'PARSING_ERROR');
+        message: 'Data format error',
+        code: 'PARSING_ERROR',
+      );
     } else if (error is AuthenticationException) {
-      return AuthenticationFailure(message: error.message, code: 'AUTH_ERROR');
+      return AuthenticationFailure(
+        message: error.message,
+        code: 'AUTH_ERROR',
+      );
     } else if (error is DatabaseException) {
-      return DatabaseFailure(message: error.message, code: 'DB_ERROR');
+      return DatabaseFailure(
+        message: error.message,
+        code: 'DB_ERROR',
+      );
     } else if (error is PlatformException) {
       return PlatformFailure(
         message: error.message ?? 'Platform error',
         code: 'PLATFORM_ERROR',
+      );
+    } else if (error is HiveError) {
+      return HiveFailure(
+        message: error.message,
+        code: 'HIVE_ERROR',
       );
     } else if (error is Exception) {
       return UnknownFailure(
@@ -134,6 +148,13 @@ class PlatformFailure extends Failure {
 
 class DatabaseFailure extends Failure {
   DatabaseFailure({required super.message, required super.code});
+
+  @override
+  UIFeedbackType get uiFeedbackType => UIFeedbackType.snackbar;
+}
+
+class HiveFailure extends Failure {
+  HiveFailure({required super.message, required super.code});
 
   @override
   UIFeedbackType get uiFeedbackType => UIFeedbackType.snackbar;
