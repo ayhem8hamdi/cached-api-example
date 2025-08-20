@@ -1,16 +1,19 @@
 class ProductEntity {
-  final int id;
-  final double price;
-  final String category, photoUrl, name, description;
-  final DateTime updatedAt, createdAt;
+  final int? productId;
+  final double? productPrice;
+  final String? productCategory,
+      productPhotoUrl,
+      productName,
+      productDescription;
+  final DateTime? productUpdatedAt, productCreatedAt;
 
   ProductEntity(
-      {required this.id,
-      required this.price,
-      required this.category,
-      required this.photoUrl,
-      required this.name,
-      required this.description,
-      required this.updatedAt,
-      required this.createdAt});
+      {required this.productId,
+      required this.productPrice,
+      required this.productCategory,
+      required this.productPhotoUrl,
+      required this.productName,
+      required this.productDescription,
+      required this.productUpdatedAt,
+      required this.productCreatedAt});
 }
