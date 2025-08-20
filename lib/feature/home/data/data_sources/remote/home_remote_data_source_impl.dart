@@ -20,8 +20,9 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   }
 
   void saveProductsLocally(List<Product>? list) {
-    var productBox = Hive.box(kProductBoxName);
+    if (list == null) return;
+    var productBox = Hive.box<ProductEntity>(kProductBoxName);
     productBox.clear();
-    productBox.add(list);
+    productBox.addAll(list);
   }
 }
