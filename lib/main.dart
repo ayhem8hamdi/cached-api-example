@@ -1,7 +1,14 @@
+import 'package:caching/feature/home/domain/entities/product_entity.dart';
 import 'package:caching/feature/home/presentation/views/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+import 'constants.dart';
+
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(ProductEntityAdapter());
+  await Hive.openBox(kProductBoxName);
   runApp(const MyApp());
 }
 
