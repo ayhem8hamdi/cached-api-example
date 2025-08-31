@@ -1,5 +1,5 @@
 import 'package:caching/feature/home/presentation/views/widgets/custom_home_app_bar.dart';
-import 'package:caching/feature/home/presentation/views/widgets/product_item.dart';
+import 'package:caching/feature/home/presentation/views/widgets/products_sliver_list.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -12,7 +12,7 @@ class HomeScreenBody extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: CustomScrollView(
-          slivers: [CustomHomeAppBar(), SliverGap(25), ProductItem()],
+          slivers: [CustomHomeAppBar(), SliverGap(25), ProductsSliverList()],
         ),
       ),
     );

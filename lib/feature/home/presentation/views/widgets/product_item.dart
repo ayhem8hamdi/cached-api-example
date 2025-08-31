@@ -7,14 +7,12 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(flex: 2, child: ProductImage()),
-          Expanded(flex: 3, child: ProductInfos())
-        ],
-      ),
+    return const Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(flex: 2, child: ProductImage()),
+        Expanded(flex: 3, child: ProductInfos())
+      ],
     );
   }
 }
