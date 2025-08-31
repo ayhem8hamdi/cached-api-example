@@ -10,7 +10,7 @@ class ProductsSliverList extends StatelessWidget {
     return SliverList.builder(
         itemCount: products.length,
         itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.only(bottom: 15),
               child: ProductItem(
                 productEntity: products[index],
               ),

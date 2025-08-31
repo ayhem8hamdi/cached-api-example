@@ -20,7 +20,12 @@ class ProductInfos extends StatelessWidget {
         children: [
           Text(productEntity.productName!),
           const Gap(4),
-          Text(productEntity.productDescription!),
+          Text(
+            productEntity.productDescription!,
+            softWrap: true,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
           const Gap(4),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
