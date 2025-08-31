@@ -1,34 +1,46 @@
+import 'package:caching/feature/home/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 
 class ProductInfos extends StatelessWidget {
   const ProductInfos({
     super.key,
+    required this.productEntity,
   });
+  final ProductEntity productEntity;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 8),
+    return Padding(
+      padding: const EdgeInsets.only(left: 8),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Product 1'),
-          Gap(4),
-          Text('others few us role set '),
-          Gap(4),
+          Text(productEntity.productName!),
+          const Gap(4),
+          Text(productEntity.productDescription!),
+          const Gap(4),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text('Created At'), Text('24-04-2004')],
+            children: [
+              const Text('Created At'),
+              Text(DateFormat('dd-MM-yyyy')
+                  .format(productEntity.productCreatedAt!)),
+            ],
           ),
-          Gap(5),
+          const Gap(5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text('Updated At'), Text('24-04-2004')],
+            children: [
+              const Text('Updated At'),
+              Text(DateFormat('dd-MM-yyyy')
+                  .format(productEntity.productUpdatedAt!)),
+            ],
           ),
-          Gap(8),
-          ProductPricingRow()
+          const Gap(8),
+          ProductPricingRow(productEntity: productEntity)
         ],
       ),
     );
@@ -38,7 +50,9 @@ class ProductInfos extends StatelessWidget {
 class ProductPricingRow extends StatelessWidget {
   const ProductPricingRow({
     super.key,
+    required this.productEntity,
   });
+  final ProductEntity productEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +65,8 @@ class ProductPricingRow extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.blueAccent,
                 borderRadius: BorderRadius.circular(3)),
-            child: const Text('Created At')),
-        const Text(r'988$')
+            child: Text(productEntity.productCategory!)),
+        Text("${productEntity.productPrice.toString()} £")
       ],
     );
   }
