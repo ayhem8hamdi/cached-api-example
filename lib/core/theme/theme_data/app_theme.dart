@@ -21,8 +21,8 @@ class ThemeColorScheme {
       onTertiary: AppDarkColors.onThirdColor,
       error: Colors.red,
       onError: Colors.black,
-      surface: const Color(0XFF161622),
-      onSurface: const Color(0XFFFFFFFF));
+      surface: AppDarkColors.surfaceColor,
+      onSurface: AppDarkColors.onSurfaceColor);
 
   static ColorScheme lightColorScheme = ColorScheme(
       brightness: Brightness.light,
@@ -34,6 +34,6 @@ class ThemeColorScheme {
       onTertiary: AppLightColors.onThirdColor,
       error: Colors.red,
       onError: Colors.black,
-      surface: const Color(0XFFFFFFFF),
-      onSurface: const Color(0XFF1E1E2D));
+      surface: AppLightColors.surfaceColor,
+      onSurface: AppLightColors.onSurfaceColor);
 }
