@@ -12,42 +12,39 @@ class ProductInfos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(productEntity.productName!),
-          const Gap(4),
-          Text(
-            productEntity.productDescription!,
-            softWrap: true,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const Gap(4),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('Created At'),
-              Text(DateFormat('dd-MM-yyyy')
-                  .format(productEntity.productCreatedAt!)),
-            ],
-          ),
-          const Gap(5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('Updated At'),
-              Text(DateFormat('dd-MM-yyyy')
-                  .format(productEntity.productUpdatedAt!)),
-            ],
-          ),
-          const Gap(8),
-          ProductPricingRow(productEntity: productEntity)
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(productEntity.productName!),
+        const Gap(4),
+        Text(
+          productEntity.productDescription!,
+          softWrap: true,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        const Gap(4),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('Created At'),
+            Text(DateFormat('dd-MM-yyyy')
+                .format(productEntity.productCreatedAt!)),
+          ],
+        ),
+        const Gap(5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('Updated At'),
+            Text(DateFormat('dd-MM-yyyy')
+                .format(productEntity.productUpdatedAt!)),
+          ],
+        ),
+        const Gap(8),
+        ProductPricingRow(productEntity: productEntity)
+      ],
     );
   }
 }

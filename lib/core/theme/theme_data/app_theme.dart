@@ -1,6 +1,39 @@
+import 'package:caching/core/theme/colors/app_dark_colors.dart';
+import 'package:caching/core/theme/colors/app_light_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static ThemeData lightTheme = ThemeData();
-  static ThemeData darkTheme = ThemeData();
+  static ThemeData lightTheme =
+      ThemeData(colorScheme: ThemeColorScheme.lightColorScheme);
+
+  static ThemeData darkTheme =
+      ThemeData(colorScheme: ThemeColorScheme.darkColorScheme);
+}
+
+class ThemeColorScheme {
+  static ColorScheme darkColorScheme = ColorScheme(
+      brightness: Brightness.dark,
+      primary: AppDarkColors.primaryColor,
+      onPrimary: AppDarkColors.onPrimaryColor,
+      secondary: AppDarkColors.secondaryColor,
+      onSecondary: AppDarkColors.onSecondaryColor,
+      tertiary: AppDarkColors.thirdColor,
+      onTertiary: AppDarkColors.onThirdColor,
+      error: Colors.red,
+      onError: Colors.black,
+      surface: const Color(0XFF161622),
+      onSurface: const Color(0XFFFFFFFF));
+
+  static ColorScheme lightColorScheme = ColorScheme(
+      brightness: Brightness.light,
+      primary: AppLightColors.primaryColor,
+      onPrimary: AppLightColors.onPrimaryColor,
+      secondary: AppLightColors.secondaryColor,
+      onSecondary: AppLightColors.onSecondaryColor,
+      tertiary: AppLightColors.thirdColor,
+      onTertiary: AppLightColors.onThirdColor,
+      error: Colors.red,
+      onError: Colors.black,
+      surface: const Color(0XFFFFFFFF),
+      onSurface: const Color(0XFF1E1E2D));
 }

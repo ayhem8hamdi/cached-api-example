@@ -1,5 +1,5 @@
 import 'package:caching/core/services/dependency_injection.dart';
-import 'package:caching/core/theme/app_theme.dart';
+import 'package:caching/core/theme/theme_data/app_theme.dart';
 import 'package:caching/feature/home/domain/entities/product_entity.dart';
 import 'package:caching/feature/home/domain/repos/product_repostry.dart';
 import 'package:caching/feature/home/presentation/manager/products_cubit/products_cubit.dart';
@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
           ProductsCubit(getIt<ProductRepostry>())..fetchProducts(),
       child: MaterialApp(
         themeMode: ThemeMode.system,
-        theme: AppTheme.getLightTheme(),
-        darkTheme: AppTheme.getDarkTheme(),
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
         debugShowCheckedModeBanner: false,
         home: const HomeScreen(),
       ),
