@@ -3,6 +3,7 @@ import 'package:caching/feature/home/presentation/views/widgets/product_image.da
 import 'package:caching/feature/home/presentation/views/widgets/product_infos.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({super.key, required this.productEntity});
@@ -10,17 +11,20 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Flexible(
-            flex: 4,
-            child: ProductImage(
-              imageLink: productEntity.productPhotoUrl!,
-            )),
-        const Gap(10),
-        Flexible(flex: 5, child: ProductInfos(productEntity: productEntity))
-      ],
+    return GestureDetector(
+      onTap: () => context.go('/home/details'),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Flexible(
+              flex: 4,
+              child: ProductImage(
+                imageLink: productEntity.productPhotoUrl!,
+              )),
+          const Gap(10),
+          Flexible(flex: 5, child: ProductInfos(productEntity: productEntity))
+        ],
+      ),
     );
   }
 }

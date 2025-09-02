@@ -1,6 +1,9 @@
 import 'package:caching/core/shared_widgets/custom_buttom_nav_bar.dart';
+import 'package:caching/feature/cards/presentation/view/cards_screen.dart';
+import 'package:caching/feature/home/presentation/views/home_details_screen.dart';
 import 'package:caching/feature/home/presentation/views/widgets/home_screen_body.dart';
-import 'package:flutter/material.dart';
+import 'package:caching/feature/settings/presentation/views/settings_screen.dart';
+import 'package:caching/feature/stats/presentation/views/stats_screen.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
@@ -15,36 +18,41 @@ abstract class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/home',
-                builder: (context, state) => const HomeScreenBody(),
-              ),
+                  name: home,
+                  path: '/home',
+                  builder: (context, state) => const HomeScreenBody(),
+                  routes: [
+                    GoRoute(
+                      path: 'details',
+                      builder: (context, state) => const HomeDetailsScreen(),
+                    )
+                  ]),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
+                name: myCards,
                 path: '/carts',
-                builder: (context, state) => const Center(
-                  child: Text('Carts'),
-                ),
+                builder: (context, state) => const CardsScreen(),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
+                name: stats,
                 path: '/stats',
-                builder: (context, state) => const Center(child: Text('stats')),
+                builder: (context, state) => const StatsScreen(),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
+                  name: parameters,
                   path: '/params',
-                  builder: (context, state) => Center(
-                        child: Text('Settings'),
-                      )),
+                  builder: (context, state) => const SettingsScreen()),
             ],
           ),
         ])
