@@ -1,3 +1,4 @@
+import 'package:caching/core/theme/text_styles/app_styles.dart';
 import 'package:caching/feature/home/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -16,10 +17,14 @@ class ProductInfos extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(productEntity.productName!),
+        Text(
+          productEntity.productName!,
+          style: AppStyles.styleBold17(context),
+        ),
         const Gap(4),
         Text(
           productEntity.productDescription!,
+          style: AppStyles.styleRegular15(context),
           softWrap: true,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -28,18 +33,28 @@ class ProductInfos extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Created At'),
-            Text(DateFormat('dd-MM-yyyy')
-                .format(productEntity.productCreatedAt!)),
+            Text(
+              'Created At',
+              style: AppStyles.styleSemiBold15(context),
+            ),
+            Text(
+              DateFormat('dd-MM-yyyy').format(productEntity.productCreatedAt!),
+              style: AppStyles.styleRegular15(context),
+            ),
           ],
         ),
         const Gap(5),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Updated At'),
-            Text(DateFormat('dd-MM-yyyy')
-                .format(productEntity.productUpdatedAt!)),
+            Text(
+              'Updated At',
+              style: AppStyles.styleSemiBold15(context),
+            ),
+            Text(
+              DateFormat('dd-MM-yyyy').format(productEntity.productUpdatedAt!),
+              style: AppStyles.styleRegular15(context),
+            ),
           ],
         ),
         const Gap(8),
@@ -68,7 +83,10 @@ class ProductPricingRow extends StatelessWidget {
                 color: Colors.blueAccent,
                 borderRadius: BorderRadius.circular(3)),
             child: Text(productEntity.productCategory!)),
-        Text("${productEntity.productPrice.toString()} £")
+        Text(
+          "${productEntity.productPrice.toString()} £",
+          style: AppStyles.styleSemiBold15(context),
+        )
       ],
     );
   }
